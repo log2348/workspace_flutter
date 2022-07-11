@@ -13,11 +13,20 @@ class RecipeListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20), // vertical - top, bottom에 적용
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset("assets/images/${imageName}.jpeg",
-          fit: BoxFit.cover,
+          AspectRatio(
+            aspectRatio: 2 /1,       
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              "assets/images/${imageName}.jpeg",
+              fit: BoxFit.cover,
+             ),
+          ),
           ),
           SizedBox(height: 10),
+          Text(title, style: TextStyle(fontSize: 20),),
           Text(
             "Have you ever made your own $title? Once you've tried a homemade $title, you'll never go back.",
           style:

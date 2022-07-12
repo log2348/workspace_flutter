@@ -14,7 +14,6 @@ class BasicText extends StatelessWidget {
     return Column(
       children: [
         Container(
-          // Ctrl + W 번 누르면 위젯의 영역이 선택된다
           width: double.infinity,
           child: Text(
             'Hello, $_name! How are you? adsfsdfasdfasdfasdfasdfffffffffffffffasdfsdfasdfasdf',

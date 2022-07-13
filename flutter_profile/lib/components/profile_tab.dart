@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// TabBar 탭할때마다 화면 동적으로 변해야하므로, 그림을 다시그려야 하므로
+// stateful 위젯 사용
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
 
@@ -37,6 +39,7 @@ class _ProfileTabState extends State<ProfileTab>
     );
   }
 
+// 현재 선택된 탭에 해당하는 화면 표시하는 위젯
   Widget _buildTabBarView() {
     return TabBarView(
       controller: _tabController,

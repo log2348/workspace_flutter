@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'welcome to flutter',
       home: Scaffold(
         appBar: AppBar(
+          elevation: 0.0,
           title: const Text("Welcome to Flutter"),
         ),
         body: ListView(
@@ -34,6 +35,56 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MyStar extends StatefulWidget {
+  const MyStar({Key? key}) : super(key: key);
+
+  @override
+  State<MyStar> createState() => _MyStarState();
+}
+
+class _MyStarState extends State<MyStar> {
+  //Color color = Colors.red;
+
+  Icon starIcon = Icon(
+    Icons.star_border_outlined,
+    color: Colors.red,
+  );
+
+  @override
+  void initState() {
+    //color = Colors.red;
+    starIcon = Icon(
+      Icons.star_border_outlined,
+      color: Colors.red,
+    );
+  }
+
+  void changeStar() {
+    setState(() {
+      //color = (color == Colors.red) ? Colors.white : Colors.red;
+      starIcon =
+          (starIcon == Icon(Icons.star_border_outlined, color: Colors.red))
+              ? Icon(
+                  Icons.star,
+                  color: Colors.red,
+                )
+              : Icon(
+                  Icons.star_border_outlined,
+                  color: Colors.red,
+                );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+        onTap: () {
+          changeStar();
+        },
+        child: starIcon);
   }
 }
 
@@ -58,10 +109,7 @@ Widget titleSection = Container(
           ),
         ],
       )),
-      Icon(
-        Icons.star,
-        color: Colors.red[500],
-      ),
+      MyStar(),
       const Text("41")
     ],
   ),

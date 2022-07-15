@@ -46,35 +46,18 @@ class MyStar extends StatefulWidget {
 }
 
 class _MyStarState extends State<MyStar> {
-  //Color color = Colors.red;
-
-  Icon starIcon = Icon(
-    Icons.star_border_outlined,
-    color: Colors.red,
-  );
+  IconData iconData = Icons.star_border_outlined;
 
   @override
   void initState() {
-    //color = Colors.red;
-    starIcon = Icon(
-      Icons.star_border_outlined,
-      color: Colors.red,
-    );
+    iconData = Icons.star_border_outlined;
   }
 
   void changeStar() {
     setState(() {
-      //color = (color == Colors.red) ? Colors.white : Colors.red;
-      starIcon =
-          (starIcon == Icon(Icons.star_border_outlined, color: Colors.red))
-              ? Icon(
-                  Icons.star,
-                  color: Colors.red,
-                )
-              : Icon(
-                  Icons.star_border_outlined,
-                  color: Colors.red,
-                );
+      iconData = (iconData == Icons.star_border_outlined)
+          ? Icons.star
+          : Icons.star_border_outlined;
     });
   }
 
@@ -84,7 +67,7 @@ class _MyStarState extends State<MyStar> {
         onTap: () {
           changeStar();
         },
-        child: starIcon);
+        child: Icon(iconData, color: Colors.red));
   }
 }
 

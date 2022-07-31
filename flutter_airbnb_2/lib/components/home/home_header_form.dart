@@ -1,25 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airbnb_2/components/common/common_form_field.dart';
 import 'package:flutter_airbnb_2/size.dart';
+import 'package:flutter_airbnb_2/styles.dart';
 
 class HomeHeaderForm extends StatelessWidget {
   const HomeHeaderForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      width: 420,
-      child: Form(
-          child: Padding(
-        padding: const EdgeInsets.all(gap_l),
-        child: Column(
-          children: [_buildFormTitle(), _buildFormField(), _buildFormSubmit()],
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return Padding(
+      padding: const EdgeInsets.only(top: gap_m),
+      child: Align(
+        alignment: screenWidth < 520 ? Alignment(0, 0) : Alignment(-0.6, 0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          width: 420,
+          child: Form(
+            child: Padding(
+              padding: const EdgeInsets.all(gap_l),
+              child: Column(
+                children: [
+                  _buildFormTitle(),
+                  _buildFormField(),
+                  _buildFormSubmit()
+                ],
+              ),
+            ),
+          ),
         ),
-      )),
+      ),
     );
   }
 
@@ -51,16 +65,66 @@ class HomeHeaderForm extends StatelessWidget {
                 child: CommonFormFiled(
               prefixText: "체크인",
               hintText: "날짜 입력",
-            ))
+            )),
+            SizedBox(
+              width: gap_s,
+            ),
+            Expanded(
+                child: CommonFormFiled(
+              prefixText: "체크아웃",
+              hintText: "날짜 입력",
+            )),
+            SizedBox(
+              height: gap_s,
+            )
           ],
-        )
+        ),
+        SizedBox(
+          height: gap_s,
+        ),
+        Row(
+          children: [
+            Expanded(
+                child: CommonFormFiled(
+              prefixText: "성인",
+              hintText: "2",
+            )),
+            SizedBox(
+              width: gap_xs,
+            ),
+            Expanded(
+                child: CommonFormFiled(
+              prefixText: "어린이",
+              hintText: "0",
+            )),
+          ],
+        ),
+        SizedBox(
+          height: gap_m,
+        ),
       ],
     );
   }
 
   Widget _buildFormSubmit() {
-    return Column(
-      children: [],
+    return SizedBox(
+      width: double.infinity,
+      height: 50,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: Colors.redAccent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        child: Text(
+          "검색",
+          style: subTitle1(mColor: Colors.white),
+        ),
+        onPressed: () {
+          print("submit 클릭됨");
+        },
+      ),
     );
   }
 }

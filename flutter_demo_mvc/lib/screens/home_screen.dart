@@ -37,6 +37,12 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // POST 호출
+          print('Post 선택됨');
+          todoController.postTodo(new Todo()!).then((value) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                duration: const Duration(milliseconds: 500),
+                content: Text('Post 통신 성공')));
+          });
         },
         child: Icon(Icons.add),
       ),
@@ -44,7 +50,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-SafeArea buildBodyContent(AsyncSnapshot<List<Todo>?> snapshot, TodoController todoController) {
+SafeArea buildBodyContent(
+    AsyncSnapshot<List<Todo>?> snapshot, TodoController todoController) {
   return SafeArea(
     child: ListView.separated(
         itemBuilder: (context, index) {
@@ -68,31 +75,49 @@ SafeArea buildBodyContent(AsyncSnapshot<List<Todo>?> snapshot, TodoController to
                   child: Row(
                     children: [
                       InkWell(
-                          onTap: () {
-                            todoController.putCompleted(todo!).then((value) =>
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                    duration: const Duration(milliseconds: 500),
-                                    content: Text("$value 수정 완료"))));
-                          },
-                          child: buildCallContainer(
-                            'put',
-                            Color.fromARGB(255, 238, 152, 221),
-                          )),
+                        onTap: () {
+                          print('put 선택됨');
+                          todoController.putTodo(todo!).then((value) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                duration: const Duration(milliseconds: 500),
+                                content: Text("수정 완료")));
+                          });
+                        },
+                        child: buildCallContainer(
+                          'put',
+                          Color.fromARGB(255, 238, 152, 221),
+                        ),
+                      ),
+                      SizedBox(width: 20),
                       InkWell(
                           onTap: () {
-                            todoController.updatePatchCompleted(todo!).then((value) => {
-                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                    duration: const Duration(milliseconds: 500),
-                                    content: Text("$value"),
-                                  ))
-                                });
+                            todoController
+                                .updatePatchCompleted(todo!)
+                                .then((value) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                duration: const Duration(milliseconds: 500),
+                                content: Text("$value patch 통신 성공"),
+                              ));
+                            });
                           },
                           child: buildCallContainer(
                             'patch',
                             Color(0xFFF1BEE7),
                           )),
+                      SizedBox(
+                        width: 20,
+                      ),
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            var response =
+                                todoController.deleteTodo(todo!).then((value) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text('ok'),
+                              ));
+                            });
+                          },
                           child: buildCallContainer(
                             'del',
                             Color.fromARGB(255, 255, 167, 237),
@@ -119,7 +144,8 @@ Container buildCallContainer(String title, Color color) {
   return Container(
     width: 40.0,
     height: 40.0,
-    decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(10.0)),
+    decoration:
+        BoxDecoration(color: color, borderRadius: BorderRadius.circular(10.0)),
     child: Center(
       child: Text("${title}"),
     ),

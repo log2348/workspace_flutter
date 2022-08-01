@@ -20,11 +20,11 @@ class TodoController {
     return _repository.patchCompleted(todo);
   }
 
-  Future<Todo> postTodo(Todo todo) async {
+  Future<String> postTodo(Todo todo) async {
     return _repository.postTodo(todo);
   }
 
-  Future<Todo> putCompleted(Todo todo) async {
+  Future<String> putTodo(Todo todo) async {
     return _repository.putCompleted(todo);
   }
 }

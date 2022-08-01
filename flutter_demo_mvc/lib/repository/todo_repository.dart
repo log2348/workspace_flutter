@@ -10,7 +10,7 @@ class TodoRepository implements Repository {
   @override
   Future<String> deleteTodo(Todo todo) async {
     var url = Uri.parse("$dataURL/todos/${todo.id}");
-    http.delete(url);
+    var response = await http.delete(url);
     return "ok";
   }
 
@@ -27,7 +27,7 @@ class TodoRepository implements Repository {
     var body = json.decode(response.body);
     print("decode body: ${body}");
 
-    // 파싱...
+    // 파싱
     for (var i = 0; i < body.length; i++) {
       todoList.add(Todo.fromJson(body[i]));
     }
@@ -44,7 +44,6 @@ class TodoRepository implements Repository {
     String resData = '';
     await http.patch(
       uri,
-      headers: {'Content-type': 'application/json; charset=UTF-8'},
       body: {
         'completed': (todo.completed!).toString(),
       },
@@ -57,8 +56,8 @@ class TodoRepository implements Repository {
   }
 
   @override
-  Future<Todo> postTodo(Todo todo) async {
-    Todo requestTodo = new Todo();
+  Future<String> postTodo(Todo todo) async {
+    String resData = '';
 
     var uri = Uri.parse("$dataURL/todos/posts");
     http.post(uri, headers: {
@@ -69,24 +68,29 @@ class TodoRepository implements Repository {
       'completed': (todo.completed!).toString(),
       'title': (todo.title!).toString()
     }).then((response) {
-      requestTodo = Todo.fromJson(json.decode(response.body));
+      Map<String, dynamic> result = json.decode(response.body);
+      resData = result['title'];
     });
 
-    return requestTodo;
+    return resData;
   }
 
   @override
-  Future<Todo> putCompleted(Todo todo) async {
-    Todo requestTodo;
+  Future<String> putCompleted(Todo todo) async {
+    String resData = '';
 
     var url = Uri.parse("$dataURL/todos/${todo.id}");
-    var response = await http.put(url).then((response) {
-      return json.decode(response.body);
+    await http.put(url, body: {
+      'id': '${todo.id}',
+      'title': '${todo.title}',
+      'completed': '${todo.completed}',
+      'userId': '${todo.userId}',
+    }).then((response) {
+      print("put 통신 성공");
+      Map<String, dynamic> result = json.decode(response.body);
+      resData = result['title'];
     });
 
-    var body = json.decode(response.body);
-    requestTodo = Todo.fromJson(body);
-
-    return requestTodo;
+    return resData;
   }
 }

@@ -34,20 +34,23 @@ class HomeHeaderAppBar extends StatelessWidget {
   }
 
   Widget _buildAppBarMenu() {
-    return Row(
-      children: [
-        Text(
-          "회원가입",
-          style: subTitle1(mColor: Colors.white),
-        ),
-        SizedBox(
-          width: gap_s,
-        ),
-        Text(
-          "로그인",
-          style: subTitle1(mColor: Colors.white),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        children: [
+          Text(
+            "회원가입",
+            style: subTitle1(mColor: Colors.white),
+          ),
+          SizedBox(
+            width: gap_s,
+          ),
+          Text(
+            "로그인",
+            style: subTitle1(mColor: Colors.white),
+          )
+        ],
+      ),
     );
   }
 }

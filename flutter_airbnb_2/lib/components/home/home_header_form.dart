@@ -24,11 +24,7 @@ class HomeHeaderForm extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(gap_l),
               child: Column(
-                children: [
-                  _buildFormTitle(),
-                  _buildFormField(),
-                  _buildFormSubmit()
-                ],
+                children: [_buildFormTitle(), _buildFormField(), _buildFormSubmit()],
               ),
             ),
           ),
@@ -40,7 +36,10 @@ class HomeHeaderForm extends StatelessWidget {
   Widget _buildFormTitle() {
     return Column(
       children: [
-        Text("에어비앤비에서 숙소를 검색하세요."),
+        Text(
+          "에어비앤비에서 숙소를 검색하세요.",
+          style: h4(),
+        ),
         SizedBox(
           height: gap_xs,
         ),

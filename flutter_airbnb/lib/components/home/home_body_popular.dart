@@ -42,7 +42,7 @@ class HomeBodyPopular extends StatelessWidget {
     // 1. 전체 화면 사이즈를 1000이라고 가정하고 이해를 해보자
     // 2. buildPopularList의 넓이가 화면의 70%이므로 700이다.
     // 3. HomeBodyPopularItem의 넓이는 700의 1/3인 233.33 - 5 총 크기는 228.33 이다.
-    // 4. 228.33의 인기 아이템이 3개가 배치되면 684.99 크기이고 납ㅁ은 크기는 15.01이 남는다.
+    // 4. 228.33의 인기 아이템이 3개가 배치되면 684.99 크기이고 남은 크기는 15.01이 남는다.
     // 5. 그래서 HomeBodyPopularItem 위젯 사이에 SizeBox를 width 7.5, 7.5를 줄 수 있다.
     return Wrap(
       children: [

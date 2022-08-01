@@ -43,7 +43,10 @@ class HomeHeaderForm extends StatelessWidget {
   Widget _buildFormTitle() {
     return Column(
       children: [
-        Text("에어비앤비에서 숙소를 검색하세요"),
+        Text(
+          "에어비앤비에서 숙소를 검색하세요",
+          style: h4(),
+        ),
         SizedBox(
           height: gap_xs,
         ),
@@ -64,13 +67,11 @@ class HomeHeaderForm extends StatelessWidget {
         ),
         Row(
           children: [
-            Expanded(
-                child: CommonFormField(prefixText: "체크인", hintText: "날짜 입력")),
+            Expanded(child: CommonFormField(prefixText: "체크인", hintText: "날짜 입력")),
             SizedBox(
               width: gap_xs,
             ),
-            Expanded(
-                child: CommonFormField(prefixText: "체크아웃", hintText: "날짜 입력")),
+            Expanded(child: CommonFormField(prefixText: "체크아웃", hintText: "날짜 입력")),
             SizedBox(
               height: gap_s,
             ),

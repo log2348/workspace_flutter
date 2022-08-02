@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kakao/models/user.dart';
 
+import '../screens/profile_screen.dart';
+
 class ProfileCard extends StatelessWidget {
   const ProfileCard({Key? key, required this.user}) : super(key: key);
 
@@ -11,7 +13,10 @@ class ProfileCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ProfileScreen(user: user)));
+        },
         child: ListTile(
           leading: CircleAvatar(
             radius: 20,

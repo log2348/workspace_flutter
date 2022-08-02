@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kakao_2/screens/chat_screen.dart';
-import 'package:flutter_kakao_2/screens/friends_screen.dart';
+import 'package:flutter_kakao_2/screens/friend_screen.dart';
 import 'package:flutter_kakao_2/screens/more_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

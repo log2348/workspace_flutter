@@ -9,7 +9,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final TextEditingController _textController = TextEditingController();
-  Text resultText = Text("");
   String result = "";
 
   @override
@@ -71,19 +70,26 @@ class _MainScreenState extends State<MainScreen> {
     String value = _textController.text;
     int num = int.parse(value);
 
-    setState(() {
-      // 소수 : 인수가 자신과 1뿐인 수
-      // 3, 5, 7, 11, 13, 17, 19, 23, 31, 37...
-      for (int i = 2; i < num; i++) {
-        if (num % i == 0) {
-          // 나눠지는 수가 있으면 소수가 아닌 것
-          result = '소수가 아닙니다.';
-          break;
-        } else {
-          result = '소수입니다.';
+    // 소수 : 인수가 자신과 1뿐인 수
+    // 2, 3, 5, 7, 11, 13, 17, 19, 23, 31, 37...
+    if (num != 1) {
+      if (num != 2) {
+        for (int i = 2; i < num; i++) {
+          if (num % i == 0) {
+            // 나눠지는 수가 있으면 소수가 아닌 것
+            result = '소수가 아닙니다.';
+            break;
+          } else {
+            result = '소수입니다.';
+          }
         }
+      } else {
+        result = '소수입니다.';
       }
-    });
+    } else {
+      result = '소수가 아닙니다.';
+    }
+
     return result;
   }
 }

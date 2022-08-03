@@ -27,12 +27,11 @@ class _MainScreenState extends State<MainScreen> {
             child: Column(children: [
               Text("숫자를 입력하세요."),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Container(
                 color: Colors.grey[100],
                 child: TextField(
-                  onSubmitted: _checkNumber,
                   controller: _textController,
                   maxLines: 1,
                   decoration: InputDecoration(
@@ -44,9 +43,20 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(
                 height: 20,
               ),
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      result = _checkNumber();
+                      // _textController.clear();
+                    });
+                  },
+                  child: Text('확인')),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 result,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
             ]),
           ),
@@ -55,20 +65,25 @@ class _MainScreenState extends State<MainScreen> {
   }
 
 // 소수 판별 메소드 작성
-  void _checkNumber(String value) {
+  String _checkNumber() {
     print("메소드 실행");
+
+    String value = _textController.text;
     int num = int.parse(value);
 
     setState(() {
       // 소수 : 인수가 자신과 1뿐인 수
       // 3, 5, 7, 11, 13, 17, 19, 23, 31, 37...
-      if (num % 2 != 0 || num % 3 != 0) {
-        // 소수로 나눠지는 수들 제거 (121, ...)
-
-        result = "소수입니다.";
-      } else {
-        result = "소수가 아닙니다.";
+      for (int i = 2; i < num; i++) {
+        if (num % i == 0) {
+          // 나눠지는 수가 있으면 소수가 아닌 것
+          result = '소수가 아닙니다.';
+          break;
+        } else {
+          result = '소수입니다.';
+        }
       }
     });
+    return result;
   }
 }

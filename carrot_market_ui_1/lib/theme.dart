@@ -14,15 +14,15 @@ TextTheme textTheme() {
       fontWeight: FontWeight.bold,
     ),
     bodyText1: GoogleFonts.openSans(
-      fontSize: 16.0,
+      fontSize: 15.0,
       color: Colors.black,
     ),
     bodyText2: GoogleFonts.openSans(
-      fontSize: 14.0,
+      fontSize: 13.0,
       color: Colors.grey,
     ),
     subtitle1: GoogleFonts.openSans(
-      fontSize: 15.0,
+      fontSize: 14.0,
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
@@ -33,13 +33,18 @@ AppBarTheme appBarTheme() {
   return const AppBarTheme(
     centerTitle: false,
     color: Colors.white,
-    elevation: 0.0,
+    elevation: 1.0,
     titleTextStyle: TextStyle(
-        fontFamily: 'openSans', fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
+        fontFamily: 'openSans',
+        fontSize: 16.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.black),
   );
 }
 
 ThemeData myAppTheme() {
   return ThemeData(
-      scaffoldBackgroundColor: Colors.white, textTheme: textTheme(), appBarTheme: appBarTheme());
+      scaffoldBackgroundColor: Colors.white,
+      textTheme: textTheme(),
+      appBarTheme: appBarTheme());
 }

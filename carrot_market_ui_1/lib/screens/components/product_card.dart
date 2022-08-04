@@ -1,7 +1,5 @@
 import 'package:carrot_market_ui_1/models/product.dart';
-import 'package:carrot_market_ui_1/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({Key? key, required this.product}) : super(key: key);
@@ -10,54 +8,95 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(image: NetworkImage(product.urlImage), fit: BoxFit.contain)),
-        ),
-        Column(
-          children: [
-            Text(
-              product.title,
-              style: textTheme().bodyText1,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image(
+              fit: BoxFit.cover,
+              image: NetworkImage(product.urlImage),
+              width: 90,
+              height: 90,
             ),
-            Text(
-              product.address,
-              style: textTheme().bodyText2,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.title,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  "${product.address} º ${product.publishedAt}",
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  "${product.price}원",
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                SizedBox(
+                  height: 30,
+                )
+              ],
             ),
-            Text(
-              "product.price" + "원",
-              style: textTheme().subtitle1,
-            )
-          ],
-        ),
-        SizedBox(
-          width: 20,
-        ),
-        Row(
-          children: [
-            Icon(
-              Icons.chat_bubble,
-              color: Colors.grey,
+          ),
+          const Spacer(),
+          if (product.commentsCount > 0)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 70,
+                ),
+                Icon(
+                  Icons.chat_bubble_outline,
+                  color: Colors.grey,
+                  size: 15,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  product.commentsCount.toString(),
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+              ],
             ),
-            Text(
-              product.commentsCount,
-              style: textTheme().bodyText2,
+          if (product.heartCount > 0)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 70,
+                ),
+                Icon(
+                  Icons.favorite_border,
+                  color: Colors.grey,
+                  size: 15,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  product.heartCount.toString(),
+                  style: Theme.of(context).textTheme.bodyText2,
+                )
+              ],
             ),
-            Icon(
-              Icons.favorite_border,
-              color: Colors.grey,
-            ),
-            Text(
-              product.heartCount,
-              style: textTheme().bodyText2,
-            )
-          ],
-        )
-      ],
+        ],
+      ),
     );
   }
 }

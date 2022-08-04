@@ -9,9 +9,21 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            '좌동',
-            style: TextStyle(color: Colors.black, fontSize: 17),
+          title: Row(
+            children: [
+              const Text(
+                '좌동',
+                style: TextStyle(color: Colors.black, fontSize: 17),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Icon(
+                Icons.arrow_drop_down_outlined,
+                color: Colors.black,
+                size: 20,
+              ),
+            ],
           ),
           backgroundColor: Colors.white,
           actions: [
@@ -20,26 +32,28 @@ class ChatScreen extends StatelessWidget {
               color: Colors.black,
             ),
             const SizedBox(
-              width: 10,
+              width: 15,
             ),
             Icon(
               Icons.list,
               color: Colors.black,
             ),
             const SizedBox(
-              width: 10,
+              width: 15,
             ),
             Icon(
-              Icons.alarm,
+              Icons.alarm_add,
               color: Colors.black,
             ),
             const SizedBox(
-              width: 10,
+              width: 15,
             )
           ]),
       body: ListView(
-        children:
-            List.generate(productList.length, (index) => ProductCard(product: productList[index])),
+        children: List.generate(
+          productList.length,
+          (index) => ProductCard(product: productList[index]),
+        ),
       ),
     );
   }

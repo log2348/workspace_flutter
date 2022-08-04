@@ -22,6 +22,8 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ]),
       bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey[600],
           currentIndex: _selectedIndex,
           onTap: (index) {
             setState(() {

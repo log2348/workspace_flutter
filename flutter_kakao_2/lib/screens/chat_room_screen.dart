@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_kakao_2/components/my_chat.dart';
 import 'package:flutter_kakao_2/components/other_chat.dart';

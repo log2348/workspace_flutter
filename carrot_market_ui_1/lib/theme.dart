@@ -18,13 +18,17 @@ TextTheme textTheme() {
       color: Colors.black,
     ),
     bodyText2: GoogleFonts.openSans(
-      fontSize: 13.0,
-      color: Colors.grey,
+      fontSize: 14.0,
+      color: Colors.black,
     ),
     subtitle1: GoogleFonts.openSans(
       fontSize: 14.0,
       color: Colors.black,
       fontWeight: FontWeight.bold,
+    ),
+    subtitle2: GoogleFonts.openSans(
+      fontSize: 14.0,
+      color: Colors.black,
     ),
   );
 }
@@ -33,18 +37,14 @@ AppBarTheme appBarTheme() {
   return const AppBarTheme(
     centerTitle: false,
     color: Colors.white,
-    elevation: 1.0,
+    elevation: 0.0,
+    iconTheme: IconThemeData(color: Colors.black),
     titleTextStyle: TextStyle(
-        fontFamily: 'openSans',
-        fontSize: 16.0,
-        fontWeight: FontWeight.bold,
-        color: Colors.black),
+        fontFamily: 'openSans', fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black),
   );
 }
 
 ThemeData myAppTheme() {
   return ThemeData(
-      scaffoldBackgroundColor: Colors.white,
-      textTheme: textTheme(),
-      appBarTheme: appBarTheme());
+      scaffoldBackgroundColor: Colors.white, textTheme: textTheme(), appBarTheme: appBarTheme());
 }

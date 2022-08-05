@@ -1,80 +1,26 @@
 class Product {
-  final String title;
-  final String address;
-  final String urlImage;
-  final String publishedAt;
-  final int price;
-  final int heartCount;
-  final int commentsCount;
+  String title;
+  String author;
+  String address;
+  String urlImage;
+  String publishedAt;
+  String price;
+  int heartCount;
+  int commentsCount;
 
-  Product({
-    required this.title,
-    required this.address,
-    required this.urlImage,
-    required this.publishedAt,
-    required this.price,
-    required this.heartCount,
-    required this.commentsCount,
-  });
+  Product(this.title, this.author, this.address, this.urlImage, this.publishedAt, this.price,
+      this.heartCount, this.commentsCount);
 }
 
-String _urlPrefix =
-    'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_7.jpg?raw=true';
-
-// 샘플데이터
+final _urlPrefix = 'https://github.com/flutter-coder/ui_images/blob/master/carrot_product';
+// _7.jpg?raw=true
+// 샘플 데이터
 List<Product> productList = [
-  Product(
-      title: '니트 조끼',
-      address: '좌동',
-      urlImage:
-          'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_7.jpg?raw=true',
-      publishedAt: '2시간 전',
-      price: 35000,
-      heartCount: 8,
-      commentsCount: 3),
-  Product(
-      title: '먼나라 이웃나라 12',
-      address: '중동',
-      urlImage:
-          'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_6.jpg?raw=true',
-      publishedAt: '3시간 전',
-      price: 18000,
-      heartCount: 3,
-      commentsCount: 1),
-  Product(
-      title: '캐나다구스 패딩조끼',
-      address: '우동',
-      urlImage:
-          'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_5.jpg?raw=true',
-      publishedAt: '1일 전',
-      price: 15000,
-      heartCount: 8,
-      commentsCount: 0),
-  Product(
-      title: '유럽 여행',
-      address: '우동',
-      urlImage:
-          'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_4.jpg?raw=true',
-      publishedAt: '3일 전',
-      price: 15000,
-      heartCount: 4,
-      commentsCount: 11),
-  Product(
-      title: '가죽 파우치',
-      address: '우동',
-      urlImage:
-          'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_3.jpg?raw=true',
-      publishedAt: '1주일 전',
-      price: 15000,
-      heartCount: 7,
-      commentsCount: 4),
-  Product(
-      title: '노트북',
-      address: '좌동',
-      urlImage:
-          'https://github.com/flutter-coder/ui_images/blob/master/carrot_product_2.jpg?raw=true',
-      publishedAt: '1주일 전',
-      price: 95000,
-      heartCount: 8,
-      commentsCount: 3),
+  Product('니트조끼', '당근이1', '좌동', '${_urlPrefix}_7.jpg?raw=true', '2시간 전', '35000', 8, 3),
+  Product('먼나라 이웃나라 12', '당근이2', '중동', '${_urlPrefix}_6.jpg?raw=true', '3시간 전', '18000', 1, 3),
+  Product('캐나다구스 패딩조끼', '당근이3', '우동', '${_urlPrefix}_5.jpg?raw=true', '1일 전', '15000', 0, 12),
+  Product('유럽여행', '당근이3', '우동', '${_urlPrefix}_4.jpg?raw=true', '3일 전', '15000', 4, 11),
+  Product('가죽파우치', '당근이4', '우동', '${_urlPrefix}_3.jpg?raw=true', '1주일 전', '95000', 4, 7),
+  Product('노트북', '당근이5', '중동', '${_urlPrefix}_2.jpg?raw=true', '2시간 전', '50000', 1, 0),
+  Product('아이패드', '당근이6', '좌동', '${_urlPrefix}_1.jpg?raw=true', '5시간 전', '100000', 2, 3),
 ];

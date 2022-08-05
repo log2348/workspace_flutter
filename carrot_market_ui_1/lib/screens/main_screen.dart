@@ -1,6 +1,11 @@
-import 'package:carrot_market_ui_1/screens/chat_screen.dart';
+import 'package:carrot_market_ui_1/screens/near_me/near_me_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'chatting/chatting_screen.dart';
+import 'home/home_screen.dart';
+import 'my_carrot/my_carrot_screen.dart';
+import 'neighborhood_life/neighborhood_life_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,29 +21,44 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _selectedIndex, children: [
-        ChatScreen(),
-        Container(
-          color: Colors.redAccent[100],
-        ),
+        HomeScreen(),
+        NeighborhoodLifeScreen(),
+        NearMeScreen(),
+        ChattingScreen(),
+        MyCarrotScreen()
       ]),
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey[600],
+          unselectedItemColor: Colors.grey[500],
           currentIndex: _selectedIndex,
+          backgroundColor: Colors.white,
           onTap: (index) {
             setState(() {
               _selectedIndex = index;
             });
           },
+          type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-              label: '홈',
               icon: Icon(CupertinoIcons.home),
+              label: '홈',
             ),
             BottomNavigationBarItem(
-              label: '채팅',
-              icon: Icon(CupertinoIcons.chat_bubble),
+              icon: Icon(CupertinoIcons.square_on_square),
+              label: '동네 생활',
             ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.placemark),
+              label: '내 근처',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.chat_bubble_2),
+              label: '채팅',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person),
+              label: '나의  당근',
+            )
           ]),
     );
   }

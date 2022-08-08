@@ -1,3 +1,4 @@
+import 'package:carrot_market_ui_1/screens/my_carrot/my_carrot_screen_2.dart';
 import 'package:carrot_market_ui_1/screens/near_me/near_me_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
         NeighborhoodLifeScreen(),
         NearMeScreen(),
         ChattingScreen(),
-        MyCarrotScreen()
+        MyCarrotScreen2()
       ]),
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black,

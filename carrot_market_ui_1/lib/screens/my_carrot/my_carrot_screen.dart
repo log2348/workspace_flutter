@@ -9,7 +9,7 @@ class MyCarrotScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('나의 당근'),
+        title: const Text('나의 당근'),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
@@ -35,11 +35,11 @@ class MyCarrotScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: CircleAvatar(
                     radius: 30,
-                    backgroundImage: NetworkImage(
+                    backgroundImage: const NetworkImage(
                         "https://cdn.pixabay.com/photo/2016/11/29/09/32/concept-1868728_640.jpg"),
                     child: Container(
                       alignment: Alignment.bottomRight,
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 13,
                         backgroundColor: Colors.white,
                         child: Icon(
@@ -50,7 +50,7 @@ class MyCarrotScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Column(
@@ -59,7 +59,7 @@ class MyCarrotScreen extends StatelessWidget {
                       'developer',
                       style: textTheme().headline2,
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       '좌동 #00912',
                       style: textTheme().bodyText2,
@@ -69,7 +69,7 @@ class MyCarrotScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 7,
           ),
           Column(
@@ -85,34 +85,34 @@ class MyCarrotScreen extends StatelessWidget {
                 width: 370,
                 height: 40,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Spacer(
+                  const Spacer(
                     flex: 2,
                   ),
                   _buildIcon(CupertinoIcons.bookmark_solid, '판매내역'),
-                  Spacer(),
+                  const Spacer(),
                   _buildIcon(CupertinoIcons.bag, '구매내역'),
-                  Spacer(),
+                  const Spacer(),
                   _buildIcon(CupertinoIcons.heart, '관심목록'),
-                  Spacer(
+                  const Spacer(
                     flex: 2,
                   )
                 ],
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Divider(
             thickness: 6,
             color: Colors.grey[100],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           _buildListItem(CupertinoIcons.location, '내 동네 설정'),
@@ -158,7 +158,7 @@ Widget _buildIcon(IconData iconData, String title) {
           size: 25,
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 5,
       ),
       Text(

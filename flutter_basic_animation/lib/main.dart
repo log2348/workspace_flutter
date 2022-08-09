@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic_animation/home_screen_2.dart';
 
+import 'animation_button_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen2(),
+      home: AnimationButtonScreen(),
     );
   }
 }

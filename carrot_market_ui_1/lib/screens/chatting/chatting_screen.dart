@@ -1,4 +1,7 @@
+import 'package:carrot_market_ui_1/appbar_preferred_size.dart';
 import 'package:carrot_market_ui_1/models/chat_list_icon.dart';
+import 'package:carrot_market_ui_1/models/chat_message.dart';
+import 'package:carrot_market_ui_1/screens/chatting/components/chat_container.dart';
 import 'package:carrot_market_ui_1/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -10,21 +13,14 @@ class ChattingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('채팅'),
-        bottom: PreferredSize(
-          child: Divider(
-            thickness: 0.5,
-            height: 0.5,
-            color: Colors.grey,
-          ),
-          preferredSize: Size.fromHeight(0.5),
-        ),
+        bottom: appBarBottomLine(),
       ),
       body: ListView(
-        children: List.generate(
-          chatList.length,
-          (index) => _buildChatList(chatList[index]),
-        ),
-      ),
+          children: List.generate(
+              chatMessageList.length,
+              (index) => ChatContainer(
+                    chatMessage: chatMessageList[index],
+                  ))),
     );
   }
 

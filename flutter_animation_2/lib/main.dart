@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
             ),
             Container(
               width: 40.0,
-              margin: const EdgeInsets.only(left: 4.0, top: 4.0),
+              margin: const EdgeInsets.only(left: 4.0),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
@@ -72,30 +72,34 @@ class _HomeState extends State<Home> {
                   },
                   icon: Icon(CupertinoIcons.add_circled),
                 ),
-                crossFadeState: !isOpen ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                crossFadeState: !isOpen
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
                 duration: const Duration(milliseconds: 400),
               ),
             ),
             AnimatedOpacity(
-              opacity: isOpen ? 1.0 : 0.1,
+              opacity: isOpen ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 400),
               child: Container(
-                padding: const EdgeInsets.only(left: 44.0, top: 4.0),
+                padding: const EdgeInsets.only(left: 44.0),
                 width: 240,
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(CupertinoIcons.hand_thumbsdown),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(CupertinoIcons.heart),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(CupertinoIcons.arrow_up_arrow_down),
-                  ),
-                ]),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(CupertinoIcons.hand_thumbsdown),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(CupertinoIcons.heart),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(CupertinoIcons.arrow_up_arrow_down),
+                      ),
+                    ]),
               ),
             )
           ],

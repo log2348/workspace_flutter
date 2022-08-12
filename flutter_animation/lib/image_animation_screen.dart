@@ -23,15 +23,15 @@ class FadeImage extends StatefulWidget {
 }
 
 class _FadeImageState extends State<FadeImage> {
-  double _opacityValue = 1.0;
-  bool _isClear = true;
+  bool _isClear = false;
   String _imageUrl =
       "https://cdn.pixabay.com/photo/2018/08/12/15/29/hintersee-3601004_960_720.jpg";
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: AnimatedOpacity(
-        opacity: _opacityValue,
+        opacity: _isClear ? 0.1 : 1.0,
         duration: const Duration(milliseconds: 200),
         child: Padding(
           padding: const EdgeInsets.only(top: 16.0),
@@ -51,13 +51,7 @@ class _FadeImageState extends State<FadeImage> {
             TextButton(
                 onPressed: () {
                   setState(() {
-                    if (_isClear) {
-                      _opacityValue = 0.1;
-                      _isClear = false;
-                    } else {
-                      _opacityValue = 1.0;
-                      _isClear = true;
-                    }
+                    _isClear = !_isClear;
                   });
                 },
                 child: const Text(
